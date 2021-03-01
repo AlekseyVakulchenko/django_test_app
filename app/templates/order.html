@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div>
+    {% if object_list %}
+        {% for obj in object_list %}
+            <div>
+                first_name - {{ obj.customer.first_name }} <br>
+                last_name - {{ obj.customer.last_name }} <br>
+                email_address - {{ obj.customer.email.email_address }} <br>
+                order_number - {{ obj.order_number }} <br>
+                products:  <br>
+                 {% for product in obj.products  %}
+                    <blockquote>{{ product|first }} {{ product|last }}</blockquote>
+                 {% endfor %}
+            </div>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <div>There're no orders with status True</div>
+    {% endif %}
+</div>
+{% endblock %}
